@@ -1,0 +1,39 @@
+{
+   "bridge":{
+      "name": "Homebridge",
+      "username": "CC:22:3D:E3:CE:30",
+      "port": 51925,
+      "pin":"031-45-154"
+   },
+   "description": "3707 Poinciana Dr",
+   "accessories": [
+
+   ],
+   "platforms": [
+      {
+         "platform": "cmdSwitch2",
+         "switches": [
+            {
+               "name": "Light",
+               "on_cmd": "~/workspace/rf_pi/send 5272835",
+               "off_cmd": "~/workspace/rf_pi/send 5272844"
+            },
+            {
+               "name": "Christmas Tree",
+               "on_cmd": "~/workspace/rf_pi/send 5264691",
+               "off_cmd": "~/workspace/rf_pi/send 5264700"
+            },
+            {
+               "name": "Bedroom Light",
+               "on_cmd": "~/workspace/rf_pi/send 5264835",
+               "off_cmd": "~/workspace/rf_pi/send 5264844"
+            },
+            {
+                "name": "A/C",
+                "on_cmd": "irsend SEND_ONCE geac KEY_POWER",
+                "off_cmd": "irsend SEND_ONCE geac KEY_POWER"
+            }
+         ]
+      }
+   ]
+}

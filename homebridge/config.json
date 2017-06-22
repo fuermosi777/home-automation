@@ -15,18 +15,18 @@
          "switches": [
             {
                "name": "Light",
-               "on_cmd": "~/workspace/rf_pi/send 5272835",
-               "off_cmd": "~/workspace/rf_pi/send 5272844"
+               "on_cmd": "/home/pi/workspace/rf_pi/send 5272835",
+               "off_cmd": "/home/pi/workspace/rf_pi/send 5272844"
             },
             {
                "name": "Christmas Tree",
-               "on_cmd": "~/workspace/rf_pi/send 5264691",
-               "off_cmd": "~/workspace/rf_pi/send 5264700"
+               "on_cmd": "/home/pi/workspace/rf_pi/send 5264691",
+               "off_cmd": "/home/pi/workspace/rf_pi/send 5264700"
             },
             {
                "name": "Bedroom Light",
-               "on_cmd": "~/workspace/rf_pi/send 5264835",
-               "off_cmd": "~/workspace/rf_pi/send 5264844"
+               "on_cmd": "/home/pi/workspace/rf_pi/send 5264835",
+               "off_cmd": "/home/pi/workspace/rf_pi/send 5264844"
             },
             {
                 "name": "A/C",

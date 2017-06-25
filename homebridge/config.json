@@ -30,8 +30,8 @@
             },
             {
                 "name": "A/C",
-                "on_cmd": "irsend SEND_ONCE geac KEY_POWER",
-                "off_cmd": "irsend SEND_ONCE geac KEY_POWER"
+                "on_cmd": "wget http://ac.local/ac_power",
+                "off_cmd": "wget http://ac.local/ac_power"
             }
          ]
       }

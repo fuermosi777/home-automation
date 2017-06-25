@@ -1,6 +1,7 @@
 const FauxMo = require('fauxmojs');
 const ip = require('ip');
 const { spawnSync } = require('child_process');
+const request = require('request');
 
 let fauxMo = new FauxMo({
   ipAddress: ip.address(),
@@ -38,7 +39,7 @@ let fauxMo = new FauxMo({
     name: 'A/C',
     port: 11003,
     handler(action) {
-      spawnSync('irsend', ['SEND_ONCE', 'geac', 'KEY_POWER'], { encoding: 'utf8'});
+      request.get('http://ac.local/ac_power');
     }
   }]
 });

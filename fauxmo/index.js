@@ -6,7 +6,7 @@ const request = require('request');
 let fauxMo = new FauxMo({
   ipAddress: ip.address(),
   devices: [{
-    name: 'Light',
+    name: 'Living Room Light',
     port: 11000,
     handler(action) {
       if (action === 'on') {
@@ -39,7 +39,21 @@ let fauxMo = new FauxMo({
     name: 'A/C',
     port: 11003,
     handler(action) {
-      request.get('http://ac.local/ac_power');
+      request.get('http://control2.local/ac_power');
+    }
+  }, {
+    name: 'Fan',
+    port: 11004,
+    handler(action) {
+      request.get('http://control2.local/fan_power');
+      request.get('http://control1.local/fan_power');
+    }
+  }, {
+    name: 'Fan Oscillation',
+    port: 11005,
+    handler(action) {
+      request.get('http://control2.local/fan_oscillation');
+      request.get('http://control1.local/fan_oscillation');
     }
   }]
 });

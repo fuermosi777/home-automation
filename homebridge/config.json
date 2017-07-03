@@ -30,8 +30,18 @@
             },
             {
                 "name": "A/C",
-                "on_cmd": "wget http://ac.local/ac_power",
-                "off_cmd": "wget http://ac.local/ac_power"
+                "on_cmd": "wget http://control2.local/ac_power",
+                "off_cmd": "wget http://control2.local/ac_power"
+            },
+            {
+               "name": "Fan",
+               "on_cmd": "wget http://control2.local/fan_power && wget http://control1.local/fan_power",
+               "off_cmd": "wget http://control2.local/fan_power && wget http://control1.local/fan_power"
+            },
+            {
+               "name": "Fan Oscillation",
+               "on_cmd": "wget http://control2.local/fan_oscillation && wget http://control1.local/fan_oscillation",
+               "off_cmd": "wget http://control2.local/fan_oscillation && wget http://control1.local/fan_oscillation"
             }
          ]
       }

@@ -13,9 +13,7 @@
 #include <IRrecv.h>
 #include <IRutils.h>
 
-// An IR detector/demodulator is connected to GPIO pin 14(D5 on a NodeMCU
-// board).
-uint16_t RECV_PIN = 4;
+uint16_t RECV_PIN = 4; // GPIO4
 
 IRrecv irrecv(RECV_PIN);
 

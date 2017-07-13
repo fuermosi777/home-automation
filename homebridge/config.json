@@ -6,11 +6,8 @@
       "pin":"031-45-154"
    },
    "description": "3707 Poinciana Dr",
-   "accessories": [
-
-   ],
-   "platforms": [
-      {
+   "accessories": [],
+   "platforms": [{
          "platform": "cmdSwitch2",
          "switches": [
             {
@@ -30,20 +27,31 @@
             },
             {
                 "name": "A/C",
-                "on_cmd": "wget http://control2.local/ac_power",
-                "off_cmd": "wget http://control2.local/ac_power"
+                "on_cmd": "curl http://control2.local/ac_power",
+                "off_cmd": "curl http://control2.local/ac_power"
             },
             {
                "name": "Fan",
-               "on_cmd": "wget http://control2.local/fan_power && wget http://control1.local/fan_power",
-               "off_cmd": "wget http://control2.local/fan_power && wget http://control1.local/fan_power"
+               "on_cmd": "curl http://control2.local/fan_power && curl http://control1.local/fan_power",
+               "off_cmd": "curl http://control2.local/fan_power && curl http://control1.local/fan_power"
             },
             {
                "name": "Fan Oscillation",
-               "on_cmd": "wget http://control2.local/fan_oscillation && wget http://control1.local/fan_oscillation",
-               "off_cmd": "wget http://control2.local/fan_oscillation && wget http://control1.local/fan_oscillation"
+               "on_cmd": "curl http://control2.local/fan_oscillation && curl http://control1.local/fan_oscillation",
+               "off_cmd": "curl http://control2.local/fan_oscillation && curl http://control1.local/fan_oscillation"
             }
          ]
-      }
-   ]
+   }, {
+         "platform": "cmdAccessory",
+         "name": "CMD Accessory",
+         "switches": [{
+            "name": "Door",
+            "on_cmd": "curl http://lock.local/door_lock",
+            "off_cmd": "curl http://lock.local/door_unlock",
+            "polling": true,
+            "interval": 3,
+            "manufacturer": "Apple",
+            "type" : "LockMechanism"
+         }]
+      }]
 }

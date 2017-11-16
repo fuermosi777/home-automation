@@ -36,6 +36,16 @@ let fauxMo = new FauxMo({
       }
     }
   }, {
+    name: 'Heater',
+    port: 11006,
+    handler(action) {
+      if (action === 'on') {
+        spawnSync('/home/pi/workspace/rf_pi/send', ['5266691'], { encoding: 'utf8'});
+      } else if (action === 'off') {
+        spawnSync('/home/pi/workspace/rf_pi/send', ['5266700'], { encoding: 'utf8'});
+      }
+    }
+  }, {
     name: 'A/C',
     port: 11003,
     handler(action) {

@@ -2,7 +2,7 @@
 5264691 5264700 - Christmas Tree
 5264835 5264844 - Bedroom light left
 5265155 5265164 - Bedroom light right
-5266691 5266700 - ? unused
+5266691 5266700 - Small heater
 5272835 5272844 - Lamp in living room
 
 {

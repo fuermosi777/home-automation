@@ -1,11 +1,11 @@
 {
    "bridge":{
-      "name": "Homebridge",
+      "name": "Lakeshore",
       "username": "CC:22:3D:E3:CE:30",
       "port": 51925,
       "pin":"031-45-154"
    },
-   "description": "3707 Poinciana Dr",
+   "description": "2711 S Norfolk",
    "accessories": [],
    "platforms": [{
          "platform": "cmdSwitch2",
@@ -16,34 +16,9 @@
                "off_cmd": "/home/pi/workspace/rf_pi/send 5272844"
             },
             {
-               "name": "Christmas Tree",
-               "on_cmd": "/home/pi/workspace/rf_pi/send 5264691",
-               "off_cmd": "/home/pi/workspace/rf_pi/send 5264700"
-            },
-            {
                "name": "Bedroom light",
                "on_cmd": "/home/pi/workspace/rf_pi/send 5264835",
                "off_cmd": "/home/pi/workspace/rf_pi/send 5264844"
-            },
-            {
-               "name": "Heater",
-               "on_cmd": "/home/pi/workspace/rf_pi/send 5266691",
-               "off_cmd": "/home/pi/workspace/rf_pi/send 5266700"
-            },
-            {
-                "name": "A/C",
-                "on_cmd": "curl http://control2.local/ac_power",
-                "off_cmd": "curl http://control2.local/ac_power"
-            },
-            {
-               "name": "Fan",
-               "on_cmd": "curl http://control2.local/fan_power && curl http://control1.local/fan_power",
-               "off_cmd": "curl http://control2.local/fan_power && curl http://control1.local/fan_power"
-            },
-            {
-               "name": "Fan Oscillation",
-               "on_cmd": "curl http://control2.local/fan_oscillation && curl http://control1.local/fan_oscillation",
-               "off_cmd": "curl http://control2.local/fan_oscillation && curl http://control1.local/fan_oscillation"
             }
          ]
    }, {

@@ -6,7 +6,7 @@
 
 #define DELAY_BETWEEN_COMMANDS 1000
 #define LOCK_DOOR 24
-#define UNLOCK_DOOR 134
+#define UNLOCK_DOOR 124
 
 Servo myservo;
 

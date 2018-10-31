@@ -5,14 +5,14 @@
 #include <Servo.h> 
 
 #define DELAY_BETWEEN_COMMANDS 1000
-#define LOCK_DOOR 24
-#define UNLOCK_DOOR 134
+#define LOCK_DOOR 120
+#define UNLOCK_DOOR 14
 
 Servo myservo;
 
 const char* ssid = "";
 const char* password = "";
-const char* hname = "lock";
+const char* hname = "doorlock";
 int state = LOCK_DOOR;
 
 ESP8266WebServer server(80);
@@ -62,26 +62,26 @@ void setup(void){
     Serial.println("MDNS Responder Started");
   }
 
-  server.on("/door_lock", [](){
+  server.on("/lock", [](){
     Serial.println("Lock door");
     myservo.write(LOCK_DOOR);
     state = LOCK_DOOR;
     server.send(200, "text/plain", "Door locked");
   });
 
-  server.on("/door_unlock", [](){
+  server.on("/unlock", [](){
     Serial.println("Unlock door");
     myservo.write(UNLOCK_DOOR);
     state = UNLOCK_DOOR;
     server.send(200, "text/plain", "Door unlocked");
   });
 
-  server.on("/door_state", [](){
+  server.on("/state", [](){
     Serial.println("Door state");
     if (state == LOCK_DOOR) {
-      server.send(200, "text/plain", "YES");
+      server.send(200, "text/plain", "On");
     } else {
-      server.send(200, "text/plain", "NO");
+      server.send(200, "text/plain", "Off");
     }
   });
 

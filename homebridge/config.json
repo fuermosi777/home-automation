@@ -1,37 +1,36 @@
 {
-   "bridge":{
-      "name": "Lakeshore",
-      "username": "CC:22:3D:E3:CE:30",
-      "port": 51925,
-      "pin":"031-45-154"
-   },
-   "description": "2711 S Norfolk",
-   "accessories": [],
-   "platforms": [{
-         "platform": "cmdSwitch2",
-         "switches": [
-            {
-               "name": "Light",
-               "on_cmd": "/home/pi/workspace/rf_pi/send 5272835",
-               "off_cmd": "/home/pi/workspace/rf_pi/send 5272844"
-            },
-            {
-               "name": "Bedroom light",
-               "on_cmd": "/home/pi/workspace/rf_pi/send 5264835",
-               "off_cmd": "/home/pi/workspace/rf_pi/send 5264844"
-            }
-         ]
-   }, {
-         "platform": "cmdAccessory",
-         "name": "CMD Accessory",
-         "switches": [{
-            "name": "Door",
-            "on_cmd": "curl http://lock.local/door_lock",
-            "off_cmd": "curl http://lock.local/door_unlock",
-            "polling": true,
-            "interval": 3,
-            "manufacturer": "Apple",
-            "type" : "LockMechanism"
-         }]
-      }]
+  "bridge": {
+    "name": "Homebridge",
+    "username": "CC:22:3D:E3:CE:30",
+    "port": 51925,
+    "pin": "031-45-156"
+  },
+  "description": "San Mateo",
+  "accessories": [],
+  "platforms": [
+    {
+      "platform": "cmdAccessory",
+      "name": "CMD Accessory",
+      "switches": [
+        {
+          "name": "Door",
+          "on_cmd": "curl http://doorlock/lock",
+          "off_cmd": "curl http://doorlock/unlock",
+          "polling": true,
+          "interval": 3,
+          "manufacturer": "Apple",
+          "type": "LockMechanism"
+        },
+        {
+          "name": "Livingroom Light",
+          "on_cmd": "~/workspace/rf_pi/send 5272835",
+          "off_cmd": "~/workspace/rf_pi/send 5272844",
+          "polling": true,
+          "interval": 999,
+          "manufacturer": "Apple",
+          "type": "Lightbulb"
+        }
+      ]
+    }
+  ]
 }

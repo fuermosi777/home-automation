@@ -32,8 +32,8 @@
         },
         {
           "name": "Wardrobe Light",
-          "on_cmd": "~/workspace/rf_pi/send 5264691",
-          "off_cmd": "~/workspace/rf_pi/send 5264700",
+          "on_cmd": "/home/pi/workspace/rf_pi/send 5264835",
+          "off_cmd": "/home/pi/workspace/rf_pi/send 5264844",
           "polling": true,
           "interval": 999,
           "manufacturer": "Apple",

@@ -29,6 +29,15 @@
           "interval": 999,
           "manufacturer": "Apple",
           "type": "Lightbulb"
+        },
+        {
+          "name": "Wardrobe Light",
+          "on_cmd": "~/workspace/rf_pi/send 5264691",
+          "off_cmd": "~/workspace/rf_pi/send 5264700",
+          "polling": true,
+          "interval": 999,
+          "manufacturer": "Apple",
+          "type": "Lightbulb"
         }
       ]
     }

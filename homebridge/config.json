@@ -40,6 +40,13 @@
           "type": "Lightbulb"
         }
       ]
+    },
+    {
+      "platform": "Nest",
+      "clientId": "",
+      "clientSecret": "",
+      "code": "",
+      "token":""
     }
   ]
 }

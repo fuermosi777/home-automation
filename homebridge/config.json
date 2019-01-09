@@ -16,28 +16,11 @@
           "name": "Door",
           "on_cmd": "curl http://doorlock/lock",
           "off_cmd": "curl http://doorlock/unlock",
+          "state_cmd": "curl -sS http://doorlock/state | grep -i '^LOCK$'",
           "polling": true,
           "interval": 3,
           "manufacturer": "Apple",
           "type": "LockMechanism"
-        },
-        {
-          "name": "Livingroom Light",
-          "on_cmd": "~/workspace/rf_pi/send 5272835",
-          "off_cmd": "~/workspace/rf_pi/send 5272844",
-          "polling": true,
-          "interval": 999,
-          "manufacturer": "Apple",
-          "type": "Lightbulb"
-        },
-        {
-          "name": "Wardrobe Light",
-          "on_cmd": "/home/pi/workspace/rf_pi/send 5264835",
-          "off_cmd": "/home/pi/workspace/rf_pi/send 5264844",
-          "polling": true,
-          "interval": 999,
-          "manufacturer": "Apple",
-          "type": "Lightbulb"
         }
       ]
     },
@@ -46,7 +29,17 @@
       "clientId": "",
       "clientSecret": "",
       "code": "",
-      "token":""
+      "token": ""
+    },
+    {
+      "platform": "MiAqaraPlatform",
+      "gateways": {
+        "7c49eb1d02ce": "498C87EB5B9A4176"
+      }
+    },
+    {
+      "platform": "TplinkSmarthome",
+      "name": "TplinkSmarthome"
     }
   ]
 }

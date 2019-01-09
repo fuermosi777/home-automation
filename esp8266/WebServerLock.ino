@@ -7,6 +7,7 @@
 #define DELAY_BETWEEN_COMMANDS 1000
 #define LOCK_DOOR 120
 #define UNLOCK_DOOR 14
+#define LOCKING 0
 
 Servo myservo;
 
@@ -18,9 +19,10 @@ int state = LOCK_DOOR;
 ESP8266WebServer server(80);
 
 const int led = BUILTIN_LED;
+const int button_pin = 5; // GPIO 5, D1. 
+const int servo_pin = 4; // GPIO 4 D2.
 
 void handleNotFound(){
-  digitalWrite(led, 1);
   String message = "File Not Found\n\n";
   message += "URI: ";
   message += server.uri();
@@ -33,15 +35,14 @@ void handleNotFound(){
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
   server.send(404, "text/plain", message);
-  digitalWrite(led, 1);
 }
 
 void setup(void){
-  myservo.attach(4); // GPIO 4 D2
+  myservo.attach(servo_pin);
   myservo.write(LOCK_DOOR);
   
   pinMode(led, OUTPUT);
-  digitalWrite(led, 1);
+  digitalWrite(led, LOW);
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   WiFi.hostname(hname);
@@ -63,34 +64,72 @@ void setup(void){
   }
 
   server.on("/lock", [](){
-    Serial.println("Lock door");
-    myservo.write(LOCK_DOOR);
-    state = LOCK_DOOR;
+    lockDoor();
     server.send(200, "text/plain", "Door locked");
   });
 
   server.on("/unlock", [](){
-    Serial.println("Unlock door");
-    myservo.write(UNLOCK_DOOR);
-    state = UNLOCK_DOOR;
+    unlockDoor();
     server.send(200, "text/plain", "Door unlocked");
   });
 
   server.on("/state", [](){
-    Serial.println("Door state");
     if (state == LOCK_DOOR) {
-      server.send(200, "text/plain", "On");
+      server.send(200, "text/plain", "LOCK");
     } else {
-      server.send(200, "text/plain", "Off");
+      server.send(404, "text/plain", "NOT LOCK");
     }
   });
 
   server.onNotFound(handleNotFound);
 
   server.begin();
-  Serial.println("HTTP Server Started");
+  Serial.println("HTTP Server Started.");
+
+  // Take GPIO D1 as button.
+  pinMode(button_pin, INPUT);
 }
 
 void loop(void){
   server.handleClient();
+
+  handleButton();
+}
+
+void handleButton() {
+  if (state == LOCKING) return;
+  byte pressed = digitalRead(5);
+  if (pressed == HIGH) {
+    if (state == LOCK_DOOR) {
+      unlockDoor();
+    } else {
+      lockDoor();
+    }
+  }
+}
+
+void lockDoor() {
+  if (state == LOCKING) return;
+  state = LOCKING;
+  
+  Serial.println("Locking door...");
+  myservo.write(LOCK_DOOR);
+
+  delay(1000 * 2); // After 2 seconds.
+  state = LOCK_DOOR;
+
+  digitalWrite(led, HIGH);
+}
+
+void unlockDoor() {
+  if (state == LOCKING) return;
+  state = LOCKING;
+  
+  Serial.println("Unlocking door...");
+  myservo.write(UNLOCK_DOOR);
+
+  delay(1000 * 2); // After 2 seconds.
+  state = UNLOCK_DOOR;
+
+  digitalWrite(led, LOW);
 }
